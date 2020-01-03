@@ -1,3 +1,12 @@
+/*
+* File: ItemToPurchase.h
+* Author: Joshua Reck
+* NetID: reckj2
+*
+* Description: Creates an ‘online’ shopping cart that prompts users for entries.
+*
+*/
+
 #pragma once
 
 #include <iostream>
@@ -10,10 +19,12 @@ using namespace std;
 
 class ItemToPurchase {
 public:
+	//Constructor for classs
 	ItemToPurchase();
 
 	ItemToPurchase(string, string, int, int);
 	
+	//getters and setters for class
 	string GetName() const;
 	int GetPrice() const;
 	int GetQuantity() const;
@@ -26,6 +37,8 @@ public:
 
 
 private:
+	
+	// private data members for class
 	string itemName;
 	string itemDescription;
 	int itemPrice;
