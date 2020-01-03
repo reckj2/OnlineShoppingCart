@@ -1,3 +1,13 @@
+/*
+* File: ItemToPurchase.cpp
+* Author: Joshua Reck
+* NetID: reckj2
+*
+* Description: Creates an ‘online’ shopping cart that prompts users for entries.
+*
+*/
+
+
 #include "ItemToPurchase.h"
 
 ItemToPurchase::ItemToPurchase() {
