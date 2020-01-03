@@ -1,3 +1,12 @@
+/*
+* File: main.cpp
+* Author: Joshua Reck
+* NetID: reckj2
+*
+* Description: Creates an ‘online’ shopping cart that prompts users for entries.
+*
+*/
+
 #include <iostream>
 #include <string>
 
@@ -10,15 +19,20 @@ using namespace std;
 
 int main(void) {
 
+	//temporary variables for user input
 	string tempName, cusName, tempDate, tempDesc, userRemove, userChange;
 	int tempPrice;
 	int tempQuant;
 	int totalCost;
 	char userOption = 'p';
 
+	//Create class type ShoppingCart
 	ShoppingCart cart;
+	
+	//Create class type ItemToPurchase
 	ItemToPurchase item;
 
+	//Get user input
 	cout << "Enter customer's name:" << endl;
 	getline(cin, cusName);
 	
@@ -38,9 +52,10 @@ int main(void) {
 	cout << endl;
 	
 	
-
+	//While the customer does not want to quit the program
 	while (userOption != 'q') {
 
+		//Prints list of options for customer
 		cout << "MENU" << endl;
 		cout << "a - Add item to cart" << endl;
 		cout << "d - Remove item from cart" << endl;
@@ -50,29 +65,29 @@ int main(void) {
 		cout << "q - Quit" << endl;
 		cout << endl;
 
+		//gets user input
 		cout << "Choose an option:";
 		cin >> userOption;
 		cout << endl;
 		
-
+		//If the user does not choose a given option
 		while (userOption != 'a' && userOption != 'd' && userOption != 'c' && userOption != 'i' && userOption != 'o' && userOption != 'q') {
 			cout << "Choose an option:";
 			cin >> userOption;
 			cout << endl;
 			
 		}
-
+		
+		//if user chooses to add an item to the cart
 		if (userOption == 'a') {
 			
+			//Gets item name, quantity, price and description
 			cout << "ADD ITEM TO CART" << endl;
 			cin.ignore(256, '\n');
-			//cin.clear();
 			cout << "Enter the item name:" << endl;
 			getline(cin, tempName);
-			//cin.ignore(256, '\n');
 			cout << "Enter the item description:" << endl;
 			getline(cin, tempDesc);
-			//cin.ignore(256, '\n');
 			cout << "Enter the item price:" << endl;
 			cin >> tempPrice;
 			cout << "Enter the item quantity:" << endl;
@@ -88,8 +103,11 @@ int main(void) {
 			cart.AddItem(item);
 			cout << endl;
 		}
+		
+		//If user chooses to remove an item from the cart
 		if (userOption == 'd') {
 		
+			//gets name of item
 			cout << "REMOVE ITEM FROM CART" << endl;
 			cin.ignore(256, '\n');
 			cout << "Enter name of item to remove:" << endl;
@@ -98,8 +116,11 @@ int main(void) {
 			cart.RemoveItem(userRemove);
 			cout << endl;
 		}
-		if (userOption == 'c') {
 		
+		//if user decides to change the item quantity
+		if (userOption == 'c') {
+			
+			//gets item name that user wants to change
 			cout << "CHANGE ITEM QUANTITY" << endl;
 			cin.ignore(256, '\n');
 			cout << "Enter the item name:" << endl;
@@ -111,15 +132,20 @@ int main(void) {
 			cout << endl;
 
 		}
+		
+		//if user wants to output the items descriptions
 		if (userOption == 'i') {
 		
 			cout << "OUTPUT ITEMS' DESCRIPTIONS" << endl;
 			cout << cart.GetCustomerName() << "'s Shopping Cart - " << cart.GetDate() << endl;
 			cout << endl;
+			//calls print description function
 			cart.PrintDescriptions();
 			cout << endl;
 			
 		}
+		
+		//if user wants to output everything in cart
 		if (userOption == 'o') {
 			
 			cout << "OUTPUT SHOPPING CART" <<endl;
@@ -138,57 +164,6 @@ int main(void) {
 		
 
 	}
-
-
-	/*cout << "Item 1" << endl;
-	cout << "Enter the item name:" << endl;
-	getline(cin, tempName);
-	cout << "Enter the item price:" << endl;
-	cin >> tempPrice;
-	cout << "Enter the item quantity:" << endl;
-	cin >> tempQuant;
-
-	ItemToPurchase item;
-
-	cout << endl;
-
-	cout << "Item 2" << endl;
-	item.SetName(tempName);
-	item.SetPrice(tempPrice);
-	item.SetQuantity(tempQuant);
-
-
-
-	cin.ignore(256, '\n');
-
-	ItemToPurchase item2;
-
-	cout << "Enter the item name:" << endl;
-	getline(cin, tempName);
-	cout << "Enter the item price:" << endl;
-	cin >> tempPrice;
-	cout << "Enter the item quantity:" << endl;
-	cin >> tempQuant;  
-
-	item2.SetName(tempName);
-	item2.SetPrice(tempPrice);
-	item2.SetQuantity(tempQuant);
-
-	cout << endl;
-
-
-	cout << "TOTAL COST" << endl;
-	tempPrice = item.GetPrice()*item.GetQuantity();
-	cout << item.GetName() << " " << item.GetQuantity() << " @ $" << item.GetPrice() << " = $" << tempPrice << endl;
-
-	tempPrice2 = item2.GetPrice()*item2.GetQuantity();
-	cout << item2.GetName() << " " << item2.GetQuantity() << " @ $" << item2.GetPrice() << " = $" << tempPrice2 << endl;
-
-	cout << endl;
-
-	cout << "Total: $" << (tempPrice + tempPrice2) << endl;
-
-*/
 
 	return 0;
 }
